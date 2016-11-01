@@ -1,0 +1,49 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>RGB Combiner</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <!-- Place favicon.ico in the root directory -->
+
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/main.css">
+        <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <form>
+            <fieldset>
+                <div id="bgcolor" class="row">
+                    Background: <input type="text" width="3" placeholder="rgb(100, 100, 100)">
+                    <div class="swatch"></div>
+                </div>
+                <div id="fgcolor" class="row">
+                    <span class="operator">&plus;</span>Foreground:<input type="text" width="16"  placeholder="rgb(0, 100, 50)">
+                    <span class="operator">&times;</span>Alpha: <span id="fgalpha"><input type="text" width="16" placeholder="0.5"></span>
+                    <div class="swatch"></div>
+                </div>
+                <hr>
+                <div id="result" class="row">
+                    <span class="operator">&equals;</span>
+                    <span class="output">rgb()</span>
+                    <div class="swatch"></div>
+                </div>
+            </fieldset>
+        </form>
+        <div id="results">
+
+        </div>
+
+        <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
+        <script src="js/plugins.js"></script>
+        <script src="js/main.js"></script>
+    </body>
+</html>
