@@ -1,8 +1,8 @@
 (function ($) {
 'use strict';
-var DEFAULT_FG = {values: [100, 100, 100]};
-var DEFAULT_BG = {values: [100, 100, 100]};
-var DEFAULT_ALPHA = {value: 0.5};
+var DEFAULT_FG = {values: [255, 255, 255]};
+var DEFAULT_BG = {values: [100, 0, 0]};
+var DEFAULT_ALPHA = {value: 0.42};
 
 var _fgColor = DEFAULT_FG;
 var _bgColor = DEFAULT_BG;
@@ -71,11 +71,13 @@ function onColorChange(event) {
   var value = _readStringFor.rgbVals(event.target.value);
   setRgbVals(event.target.name, value);
   setDocumentColors();
+  updateTextValues();
 }
 function onAlphaChange(event) {
   var value = _readStringFor.alphaVals(event.target.value);
   setAlphaVals(value);
   setDocumentColors();
+  updateTextValues();
 }
 
 function setDocumentColors() {
@@ -86,6 +88,19 @@ function setDocumentColors() {
   fgSwatch.style.backgroundColor = colorToRGBString(_fgColor);
   fgSwatch.style.opacity = _alpha.value;
   combinedSwatch.style.backgroundColor = colorToRGBString(combineColors(_bgColor, _fgColor, _alpha));
+}
+
+function updateTextValues() {
+  var bgInput = document.querySelector('#bgcolor input');
+  var fgInput = document.querySelector('#fgcolor input');
+  var alphaInput = document.querySelector('#fgalpha input');
+  var resultOutput = document.querySelector('#result .output');
+
+  bgInput.setAttribute('placeholder', colorToRGBString(_bgColor));
+  fgInput.setAttribute('placeholder', colorToRGBString(_fgColor));
+  alphaInput.setAttribute('placeholder', _alpha.value);
+  resultOutput.innerHTML = colorToRGBString(combineColors(_bgColor, _fgColor, _alpha));
+
 }
 
 function colorToRGBString(color) {
@@ -121,6 +136,8 @@ function attachListenersToInputs() {
 
   document.addEventListener("DOMContentLoaded", function(event) {
     attachListenersToInputs();
+    setDocumentColors();
+    updateTextValues();
   });
 
 })(window.jQuery);

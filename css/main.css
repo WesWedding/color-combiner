@@ -11,8 +11,8 @@
    ========================================================================== */
 
 html {
-    color: #FFF;
-    background-color: #583f0c;
+    color: #00bcff;
+    background-color: #011958;
     font-size: 1em;
     line-height: 1.4;
 }
@@ -25,12 +25,12 @@ html {
  */
 
 ::-moz-selection {
-    background: #b3d4fc;
+    background: #3a0057;
     text-shadow: none;
 }
 
 ::selection {
-    background: #b3d4fc;
+    background: #3a0057;
     text-shadow: none;
 }
 
@@ -110,13 +110,25 @@ input[type="text"].focus {
     margin-top: -60px;
 }
 
-.swatch {
+
+.swatch-wrap {
+    position: relative;
+}
+.swatch, .swatch-bg {
     background-color: white;
     border-radius: 10%;
+    border: 1px solid white;
     display: inline-block;
     height: 100px;
     margin: 20px;
     width: 100px;
+}
+
+.swatch-bg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index:-1;
 }
 
 #fgcolor .swatch {
