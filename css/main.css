@@ -38,7 +38,7 @@ hr {
     display: block;
     height: 1px;
     border: 0;
-    border-top: 1px solid #ccc;
+    border-top: 2px solid #00bcff;
     margin: 1em 0;
     padding: 0;
 }
@@ -59,7 +59,7 @@ fieldset {
     justify-items: center;
     margin: 0 auto;
     padding: 0;
-    width: 70%;
+    width: 50%;
 }
 
 /*
@@ -71,6 +71,9 @@ textarea {
 }
 
 form {
+    align-items: center;
+    display: flex;
+    height: 100vh;
     max-width: 960px;
     margin: 0 auto;
 }
@@ -79,13 +82,13 @@ input[type="text"] {
     padding: 5px 0;
     background: transparent;
     border: none;
-    border-bottom: solid 2px #c9c9c9;
+    border-bottom: solid 2px #00bcff;
     text-align: center;
     transition: border 0.3s;
 }
 input[type="text"]:focus,
 input[type="text"].focus {
-    border-bottom: solid 2px #969696;
+    border-bottom: solid 2px #ffffff;
 }
 
 label {
@@ -128,11 +131,16 @@ label {
     width: 100px;
 }
 
+.swatch {
+    transition: opacity 0.3s, background-color 0.3s;
+}
+
 .swatch-bg {
     position: absolute;
     left: 0;
     top: 0;
     z-index:-1;
+    transition: background-color 3s;
 }
 
 .operator {
@@ -164,14 +172,4 @@ label {
 
 .clearfix:after {
     clear: both;
-}
-
-/* ==========================================================================
-   EXAMPLE Media Queries for Responsive Design.
-   These examples override the primary ('mobile first') styles.
-   Modify as content requires.
-   ========================================================================== */
-
-@media only screen and (min-width: 35em) {
-    /* Style adjustments for viewports that meet the condition */
 }

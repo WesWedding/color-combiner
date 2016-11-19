@@ -1,5 +1,7 @@
 (function ($) {
 'use strict';
+
+var DEV = false;
 var DEFAULT_FG = {values: [255, 255, 255]};
 var DEFAULT_BG = {values: [100, 0, 0]};
 var DEFAULT_ALPHA = {value: 0.42};
@@ -44,6 +46,11 @@ function rgbValuesAreValid(values) {
   return valid;
 }
 
+function alphaValueIsValid(value) {
+  // Valid is, in this case, at least some kind of numeric value.
+  return !isNaN(parseFloat(value)) && isFinite(value);
+}
+
 function setRgbVals(inputId, values) {
   var targetColor;
   switch(inputId) {
@@ -54,16 +61,21 @@ function setRgbVals(inputId, values) {
       targetColor = _fgColor;
       break;
     default:
-      throw new Error("Invalid inputId: " + inputId);
-      break;
+      if (DEV) {throw new Error("Invalid inputId: " + inputId);}
+      return;
   }
   if (!rgbValuesAreValid(values)) {
-    throw new Error("Invalid values passed.");
+    if (DEV) {throw new Error("Invalid color values passed.")};
+    return;
   }
 
   targetColor.values = values;
 }
 function setAlphaVals(value) {
+  if (!alphaValueIsValid(value)) {
+    if (DEV) {throw new Error("Invalid alpha value passed.")};
+    return;
+  }
   _alpha.value = value;
 }
 
@@ -106,7 +118,8 @@ function updateTextValues() {
 function colorToRGBString(color) {
   var colorStr = 'rgb(';
   if (!color.values || color.values.length !== 3) {
-    throw new Error("colorToRGBString given an invalid color object");
+    if (DEV) {throw new Error("colorToRGBString given an invalid color object");}
+    return;
   }
   colorStr += color.values[0];
   colorStr += ', ' + color.values[1];
